@@ -46,16 +46,13 @@ const Wrapper = styled.div`
 const CameraView = styled.div`
   width: 100%;
   height: 100%;
+  ${props => !props.isReplayingVideo && 'display: flex;'};
 `
 
 const Video = styled.video`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  min-height: 100%;
-  min-width: 100%;
-  ${props => props.onClick && 'cursor: pointer;'};
+  width: 100%;
+  ${props => props.isReplayingVideo && 'padding: 80px 25px;'} ${props =>
+  props.onClick && 'cursor: pointer;'};
 `
 
 export default class VideoRecorder extends Component {
@@ -447,7 +444,7 @@ export default class VideoRecorder extends Component {
 
     if (isReplayingVideo) {
       return (
-        <CameraView key='replay'>
+        <CameraView key='replay' isReplayingVideo>
           <Video
             ref={el => (this.replayVideo = el)}
             src={this.state.videoUrl}
@@ -461,6 +458,7 @@ export default class VideoRecorder extends Component {
               }
               this.setState({ isReplayVideoMuted: !isReplayVideoMuted })
             }}
+            isReplayingVideo
           />
           {videoInput}
         </CameraView>
