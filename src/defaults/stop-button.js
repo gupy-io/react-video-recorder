@@ -2,27 +2,22 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Button = styled.button`
-  background: ${props => props.backgroundColor};
-  color: ${props => props.color};
-  border-radius: 4px;
-  width: 40px;
-  height: 40px;
-  background: rgba(227, 73, 28, 0.8);
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
   outline: none;
   border: none;
   cursor: pointer;
-  margin: 20px;
-
-  :hover {
-    background: #fb6d42;
-  }
 `
 
 const Border = styled.div`
-  background: rgba(255, 255, 255, 0.4);
-  height: 80px;
-  width: 80px;
+  height: 42px;
+  width: 42px;
   border-radius: 50%;
+  cursor: pointer;
+  background-color: #eb2239;
+  text-align: center;
+  line-height: 42px;
 `
 
 Button.defaultProps = {
@@ -31,7 +26,7 @@ Button.defaultProps = {
 }
 
 export default props => (
-  <Border>
-    <Button {...props} />
+  <Border {...props}>
+    <Button />
   </Border>
 )

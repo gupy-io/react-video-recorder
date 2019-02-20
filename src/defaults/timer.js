@@ -1,23 +1,24 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
+import Alarm from '../assets/alarm.png'
+
 const Text = styled.div`
   position: absolute;
-  top: 50px;
-  right: 50px;
-  font-family: Menlo, monospace;
-  font-size: 28px;
-  text-shadow: 1px 2px rgba(0, 0, 0, 0.5);
+  top: 0;
+  right: 0;
+  font-family: Lato, sans-serif;
+  font-size: 216x;
+  text-align: right;
+  background-color: #000;
+  width: 100%;
+  padding: 14px 25px;
 `
 
-const RecIcon = styled.div`
-  width: 16px;
-  height: 16px;
-  background: #e55226;
-  border-radius: 50%;
-  float: left;
-  margin: 2px 8px;
-  margin-left: 0;
+const Img = styled.img`
+  width: 17px;
+  vertical-align: top;
+  margin-right: 6px;
 `
 
 class Timer extends Component {
@@ -53,10 +54,7 @@ class Timer extends Component {
   getState (seconds) {
     const minutes = Math.floor(seconds / 60)
 
-    let humanTime =
-      minutes !== 0
-        ? `${minutes}:${this.pad(seconds - minutes * 60)}`
-        : `${seconds - minutes * 60}s`
+    let humanTime = `${minutes}:${this.pad(seconds - minutes * 60)}`
 
     return {
       seconds: seconds,
@@ -68,7 +66,7 @@ class Timer extends Component {
     const defaultText = this.props.defaultText || '0:00'
     return (
       <Text {...this.props}>
-        <RecIcon />
+        <Img src={Alarm} />
         {this.state.human || defaultText}
       </Text>
     )
