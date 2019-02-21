@@ -46,12 +46,17 @@ const Wrapper = styled.div`
 const CameraView = styled.div`
   width: 100%;
   height: 100%;
-  ${props => !props.isReplayingVideo && 'display: flex;'};
+  ${props => !props.isReplayingVideo && 'display: flex;'} ${props =>
+  !props.isReplayingVideo && 'justify-content: center;'} text-align: center;
 `
 
 const Video = styled.video`
-  width: 100%;
-  ${props => props.isReplayingVideo && 'padding: 80px 25px;'} ${props =>
+  max-width: 100%;
+  max-height: 100%;
+  padding-top: 48px;
+  padding-bottom: 75px;
+  ${props => props.isReplayingVideo && 'padding-top: 50px;'} ${props =>
+  props.isReplayingVideo && 'padding-bottom: 100px;'} ${props =>
   props.onClick && 'cursor: pointer;'};
 `
 
