@@ -465,6 +465,7 @@ export default class VideoRecorder extends Component {
             muted={isReplayVideoMuted}
             playsInline
             autoPlay
+            controls
             onClick={() => {
               if (this.replayVideo.paused) {
                 this.replayVideo.play()

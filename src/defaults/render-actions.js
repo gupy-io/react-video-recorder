@@ -27,6 +27,11 @@ const ButtonGroup = styled.div`
   flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
+
+  @media (min-width: 768px) {
+    flex-direction: row-reverse;
+    justify-content: center;
+  }
 `
 
 export default ({

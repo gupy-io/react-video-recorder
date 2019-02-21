@@ -6,6 +6,10 @@ const FinishWarningMessage = styled.div`
   font-size: 12px;
   color: #fff;
   text-align: center;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
 `
 
 export default props => (

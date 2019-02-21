@@ -12,6 +12,10 @@ const RecordAnotherVideoButton = styled.button`
   font-weight: bold;
   cursor: pointer;
   margin-top: 30px;
+
+  @media (min-width: 768px) {
+    margin-top: 0;
+  }
 `
 
 const VideocamImg = styled.img`
