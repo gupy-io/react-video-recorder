@@ -16,8 +16,9 @@ const Border = styled.div`
   border-radius: 50%;
   cursor: pointer;
   background-color: #eb2239;
-  text-align: center;
-  line-height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 Button.defaultProps = {
