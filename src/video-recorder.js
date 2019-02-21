@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 import UnsupportedView from './defaults/unsupported-view'
 import ErrorView from './defaults/error-view'
@@ -7,6 +7,13 @@ import DisconnectedView from './defaults/disconnected-view'
 import LoadingView from './defaults/loading-view'
 import renderActions from './defaults/render-actions'
 import getVideoInfo, { captureThumb } from './get-video-info'
+
+const GlobalStyles = createGlobalStyle`
+  body {
+    @import url('https://fonts.googleapis.com/css?family=Lato');
+    font-family: 'Lato', sans-serif;
+  }
+`
 
 // data shows up on some browsers
 // approx every 2 seconds
@@ -515,6 +522,7 @@ export default class VideoRecorder extends Component {
 
     return (
       <Wrapper>
+        <GlobalStyles />
         {this.renderCameraView()}
         {this.props.renderActions({
           isVideoInputSupported,

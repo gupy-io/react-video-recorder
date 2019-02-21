@@ -6,6 +6,8 @@ import RecordAnotherVideoButton from './record-another-video-button'
 import StopButton from './stop-button'
 import Timer from './timer'
 import Countdown from './countdown'
+import FinishButtonWrapper from './finish-button-wrapper'
+import FinishWarningMessage from './finish-warning-message'
 
 const ActionsWrapper = styled.div`
   position: absolute;
@@ -16,8 +18,15 @@ const ActionsWrapper = styled.div`
   align-items: center;
   justify-content: center;
   padding: 17px;
-  background-color: #000;
   width: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+`
+
+const ButtonGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
 `
 
 export default ({
@@ -56,10 +65,18 @@ export default ({
 
     if (isReplayingVideo) {
       return (
-        <RecordAnotherVideoButton
-          onClick={onStopReplaying}
-          label='Gravar novamente'
-        />
+        <ButtonGroup>
+          <FinishWarningMessage>
+            <span>Nós recomendamos usar redes Wi-Fi para subir seu vídeo</span>
+          </FinishWarningMessage>
+          <FinishButtonWrapper>
+            <button>Fazer upload</button>
+          </FinishButtonWrapper>
+          <RecordAnotherVideoButton
+            onClick={onStopReplaying}
+            label='Gravar novamente'
+          />
+        </ButtonGroup>
       )
     }
 
