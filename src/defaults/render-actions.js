@@ -41,6 +41,9 @@ export default ({
   countdownTime,
   timeLimit,
   isReplayingVideo,
+  finishButton,
+  finishWarningMessage,
+  recordAnotherVideoLabel,
 
   onTurnOnCamera,
   onTurnOffCamera,
@@ -66,15 +69,15 @@ export default ({
     if (isReplayingVideo) {
       return (
         <ButtonGroup>
-          <FinishWarningMessage>
-            <span>Nós recomendamos usar redes Wi-Fi para subir seu vídeo</span>
-          </FinishWarningMessage>
-          <FinishButtonWrapper>
-            <button>Fazer upload</button>
-          </FinishButtonWrapper>
+          {finishWarningMessage && (
+            <FinishWarningMessage>{finishWarningMessage}</FinishWarningMessage>
+          )}
+          {finishButton && (
+            <FinishButtonWrapper>{finishButton}</FinishButtonWrapper>
+          )}
           <RecordAnotherVideoButton
             onClick={onStopReplaying}
-            label='Gravar novamente'
+            label={recordAnotherVideoLabel}
           />
         </ButtonGroup>
       )

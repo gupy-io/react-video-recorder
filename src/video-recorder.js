@@ -427,7 +427,8 @@ export default class VideoRecorder extends Component {
       renderVideoInputView,
       renderUnsupportedView,
       renderErrorView,
-      renderLoadingView
+      renderLoadingView,
+      loadingMessage
     } = this.props
 
     const {
@@ -498,7 +499,7 @@ export default class VideoRecorder extends Component {
     }
 
     if (isConnecting) {
-      return renderLoadingView()
+      return renderLoadingView(loadingMessage)
     }
 
     return renderDisconnectedView()
@@ -518,7 +519,13 @@ export default class VideoRecorder extends Component {
       isReplayVideoMuted
     } = this.state
 
-    const { countdownTime, timeLimit } = this.props
+    const {
+      countdownTime,
+      timeLimit,
+      finishButton,
+      finishWarningMessage,
+      recordAnotherVideoLabel
+    } = this.props
 
     return (
       <Wrapper>
@@ -537,6 +544,9 @@ export default class VideoRecorder extends Component {
           isReplayVideoMuted,
           countdownTime,
           timeLimit,
+          finishButton,
+          finishWarningMessage,
+          recordAnotherVideoLabel,
 
           onTurnOnCamera: this.turnOnCamera,
           onTurnOffCamera: this.turnOffCamera,
@@ -555,7 +565,11 @@ VideoRecorder.defaultProps = {
   renderErrorView: () => <ErrorView />,
   renderVideoInputView: ({ videoInput }) => <Fragment>{videoInput}</Fragment>,
   renderDisconnectedView: () => <DisconnectedView />,
-  renderLoadingView: () => <LoadingView />,
+  renderLoadingView: loadingMessage => <LoadingView label={loadingMessage} />,
   renderActions,
-  countdownTime: 3 * 1000
+  countdownTime: 3 * 1000,
+  finishButton: null,
+  finishWarningMessage: null,
+  recordAnotherVideoLabel: 'Record another video',
+  loadingMessage: 'Loading...'
 }
