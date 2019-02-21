@@ -63,8 +63,12 @@ const Video = styled.video`
   padding-top: 48px;
   padding-bottom: 75px;
   ${props => props.isReplayingVideo && 'padding-top: 50px;'} ${props =>
-  props.isReplayingVideo && 'padding-bottom: 100px;'} ${props =>
+  props.isReplayingVideo && 'padding-bottom: 179px;'} ${props =>
   props.onClick && 'cursor: pointer;'};
+
+  @media (min-width: 768px) {
+    ${props => props.isReplayingVideo && 'padding-bottom: 94px;'};
+  }
 `
 
 export default class VideoRecorder extends Component {
