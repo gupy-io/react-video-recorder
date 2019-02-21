@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Button from './button'
 import RecordButton from './record-button'
+import RecordAnotherVideoButton from './record-another-video-button'
 import StopButton from './stop-button'
 import Timer from './timer'
 import Countdown from './countdown'
@@ -54,7 +55,12 @@ export default ({
     }
 
     if (isReplayingVideo) {
-      return <Button onClick={onStopReplaying}>Record another video</Button>
+      return (
+        <RecordAnotherVideoButton
+          onClick={onStopReplaying}
+          label='Gravar novamente'
+        />
+      )
     }
 
     if (isRecording) {
