@@ -410,13 +410,15 @@ export default class VideoRecorder extends Component {
   }
 
   handleStopReplaying () {
-    if (this.props.onStopReplaying) {
+    if (this.props.onStopReplaying && this.state.isInlineRecordingSupported) {
       this.props.onStopReplaying()
     }
 
-    this.setState({
-      isReplayingVideo: false
-    })
+    if (this.state.isInlineRecordingSupported) {
+      this.setState({
+        isReplayingVideo: false
+      })
+    }
 
     if (this.state.isInlineRecordingSupported && this.props.isOnInitially) {
       this.turnOnCamera()
