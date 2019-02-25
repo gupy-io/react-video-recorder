@@ -1,10 +1,9 @@
 import React from 'react'
+import styled from 'styled-components'
 
-export default () => (
-  <div>
-    Oh snap! Your browser failed to record your video.
-    <br />
-    <br />
-    Please restart it and try again 👍
-  </div>
-)
+const Error = styled.div`
+  white-space: pre-line;
+  max-width: 80%;
+`
+
+export default ({ browserErrorMessage }) => <Error>{browserErrorMessage}</Error>

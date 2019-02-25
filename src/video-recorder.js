@@ -434,7 +434,8 @@ export default class VideoRecorder extends Component {
       renderUnsupportedView,
       renderErrorView,
       renderLoadingView,
-      loadingMessage
+      loadingMessage,
+      browserErrorMessage
     } = this.props
 
     const {
@@ -494,7 +495,7 @@ export default class VideoRecorder extends Component {
     }
 
     if (thereWasAnError) {
-      return renderErrorView()
+      return renderErrorView(browserErrorMessage)
     }
 
     if (isCameraOn) {
@@ -569,7 +570,9 @@ export default class VideoRecorder extends Component {
 
 VideoRecorder.defaultProps = {
   renderUnsupportedView: () => <UnsupportedView />,
-  renderErrorView: () => <ErrorView />,
+  renderErrorView: browserErrorMessage => (
+    <ErrorView browserErrorMessage={browserErrorMessage} />
+  ),
   renderVideoInputView: ({ videoInput }) => <Fragment>{videoInput}</Fragment>,
   renderDisconnectedView: () => <DisconnectedView />,
   renderLoadingView: loadingMessage => <LoadingView label={loadingMessage} />,
@@ -578,5 +581,7 @@ VideoRecorder.defaultProps = {
   finishButton: null,
   finishWarningMessage: null,
   recordAnotherVideoLabel: 'Record another video',
-  loadingMessage: 'Loading...'
+  loadingMessage: 'Loading...',
+  browserErrorMessage:
+    'Oh snap! Your browser failed to record your video. \n\n\n Please restart it and try again 👍'
 }
